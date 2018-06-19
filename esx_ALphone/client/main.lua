@@ -153,7 +153,7 @@ RegisterNetEvent('esx_phone:onMessage')
 AddEventHandler('esx_phone:onMessage', function(phoneNumber, message, position, anon, job, dispatchRequestId)
 
   if job == 'player' then
-    ESX.ShowNotification('~b~Nouveau message~s~ : ' .. message)
+    ESX.ShowNotification('~b~Nowa Wiadomość~s~ : ' .. message)
     PlaySound(-1, "Menu_Accept", "Phone_SoundSet_Default", 0, 0, 1)
     Citizen.Wait(250)
     PlaySound(-1, "Menu_Accept", "Phone_SoundSet_Default", 0, 0, 1)
@@ -180,7 +180,7 @@ AddEventHandler('esx_phone:onMessage', function(phoneNumber, message, position, 
   if dispatchRequestId then
 
     CurrentAction            = 'dispatch'
-    CurrentActionMsg         = job .. ' - Appuyez sur ~INPUT_CONTEXT~ pour prendre l\'appel'
+    CurrentActionMsg         = job .. ' - Naciśnij ~INPUT_CONTEXT~ aby odbrać połączenie.
     CurrentDispatchRequestId = dispatchRequestId
 
     CurrentActionData = {
@@ -297,7 +297,7 @@ end)
 
 RegisterNUICallback('activate_gps', function(data)
   SetNewWaypoint(data.x, data.y)
-  ESX.ShowNotification('Position entrée dans le GPS')
+  ESX.ShowNotification('Pozycja wprowadzona w GPS')
 end)
 
 RegisterNUICallback('start_call', function(data, cb)
@@ -337,7 +337,7 @@ RegisterNUICallback('send', function(data)
     z = coords.z
   })
 
-  ESX.ShowNotification('Message envoyé')
+  ESX.ShowNotification('Wiadomość wysłana')
 
 end)
 
@@ -399,7 +399,7 @@ RegisterNUICallback('bank_transfer', function(data, cb)
   if amount ~= nil then
     TriggerServerEvent('esx_phone:bankTransfer', data.player, amount)
   else
-    ESX.ShowNotification('Montant invalide')
+    ESX.ShowNotification('Nie prawidłowa kwota')
   end
 
 end)
